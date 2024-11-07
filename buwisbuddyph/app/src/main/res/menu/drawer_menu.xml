@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_profile"
+        android:title="@string/my_profile" />
+    <item
+        android:id="@+id/nav_create_budget"
+        android:title="@string/create_budget" />
+    <item
+        android:id="@+id/nav_professional_help"
+        android:title="@string/professional_help" />
+
+    <item
+        android:id="@+id/nav_tax_calculator"
+        android:title="@string/tax_calculator" />
+
+    <item
+        android:id="@+id/nav_document_list"
+        android:title="@string/document_list" />
+
+    <item
+        android:id="@+id/nav_purchase"
+        android:title="@string/in_app_purchases" />
+    <item
+        android:id="@+id/nav_guides"
+        android:title="@string/guides" />
+    <item
+        android:id="@+id/nav_settings"
+        android:title="@string/settings" />
+    <item
+        android:id="@+id/nav_logout"
+        android:title="@string/logout" />
+</menu>
