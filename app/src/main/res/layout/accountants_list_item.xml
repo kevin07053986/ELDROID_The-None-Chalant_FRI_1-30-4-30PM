@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:background="@drawable/square_border_default">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/accountantProfileImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/default_profile_img" />
+
+    <TextView
+        android:id="@+id/accountantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountantProfileImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/juan_dela_cruz"
+        android:textSize="20sp" />
+
+    <RatingBar
+        android:id="@+id/accountantRatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/accountantName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="5"
+        android:stepSize="1"
+        android:scaleX="0.75"
+        android:scaleY="0.75" />
+
+</RelativeLayout>

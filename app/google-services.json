@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "280638373683",
+    "project_id": "buwisbuddyph",
+    "storage_bucket": "buwisbuddyph.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280638373683:android:65b1de0c26b9164828c846",
+        "android_client_info": {
+          "package_name": "com.mab.buwisbuddyph"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "280638373683-goss68ki93sahm8omdo5hjknhg71ie2s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKeM7jqBs6Jd25u4EWZuZC9L6i5J9a17A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "280638373683-goss68ki93sahm8omdo5hjknhg71ie2s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
