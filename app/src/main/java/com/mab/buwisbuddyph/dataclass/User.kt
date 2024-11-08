@@ -1,9 +1,9 @@
-package com.mab.buwisbuddyph.dataclass
+package com.mab.buwisbuddyph.model
 
 import com.google.firebase.Timestamp
 
 data class User(
-    val userID: String = "",
+    var userID: String = "",
     val userFullName: String = "",
     val userEmail: String = "",
     val userProfileImage: String = "",
