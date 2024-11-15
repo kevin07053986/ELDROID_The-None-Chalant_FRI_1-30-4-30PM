@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.mab.buwisbuddyph.R
 import com.mab.buwisbuddyph.dataclass.new_Message
-import com.mab.buwisbuddyph.messages.ChatActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MessageListAdapter3(private val messages: List<new_Message>) : RecyclerView.Adapter<MessageListAdapter3.MessageViewHolder>() {

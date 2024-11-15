@@ -13,8 +13,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.mab.buwisbuddyph.BudgetActivity
 import com.mab.buwisbuddyph.R
+import com.mab.buwisbuddyph.util.BudgetFragment
 
 class HomeFragment : Fragment() {
 
@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
         loadBudget()
 
         createNewBudget.setOnClickListener {
-            val intent = Intent(requireContext(), BudgetActivity::class.java)
+            val intent = Intent(requireContext(), BudgetFragment::class.java)
             startActivity(intent)
         }
 

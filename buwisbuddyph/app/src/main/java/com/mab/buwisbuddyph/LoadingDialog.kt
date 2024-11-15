@@ -1,17 +1,17 @@
 package com.mab.buwisbuddyph
 
-import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.view.LayoutInflater
 
-class LoadingDialog(private val activity: Activity) {
+class LoadingDialog(private val activity: Context) {
 
     private lateinit var dialog: AlertDialog
 
     fun loginLoadingDialog() {
         val builder = AlertDialog.Builder(activity)
         val inflater = LayoutInflater.from(activity)
-        builder.setView(inflater.inflate(R.layout.activity_loading_screen, null))
+        builder.setView(inflater.inflate(R.layout.loading_screen, null))
         builder.setCancelable(false)
 
         dialog = builder.create()

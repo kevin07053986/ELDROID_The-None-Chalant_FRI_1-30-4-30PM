@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: io.coil-kt:coil:1.4.0@aar" external-system-id="GRADLE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/gradle-8.4-bin/gradle-8.4/caches/transforms-4/5762f179564ec328a5018b15b1ac84b8/transformed/coil-1.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/gradle-8.4-bin/gradle-8.4/caches/transforms-4/5762f179564ec328a5018b15b1ac84b8/transformed/coil-1.4.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/gradle-8.4-bin/gradle-8.4/caches/modules-2/files-2.1/io.coil-kt/coil/1.4.0/90dc3c7b089dfad01c9ca84dde26cb28d7afff59/coil-1.4.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/gradle-8.4-bin/gradle-8.4/caches/modules-2/files-2.1/io.coil-kt/coil/1.4.0/294576abffbf241e19fb9a439b7e4e539dda245f/coil-1.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

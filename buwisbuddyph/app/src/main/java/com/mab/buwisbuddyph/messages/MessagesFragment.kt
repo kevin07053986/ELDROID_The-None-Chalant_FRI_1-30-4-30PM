@@ -40,7 +40,7 @@ class MessagesFragment : Fragment() {
         btnTrash.text = "Trash (${trashBadge})"
 
         view.findViewById<View>(R.id.btnNewMessage).setOnClickListener {
-            val intent = Intent(requireContext(), CreateMessageActivity::class.java)
+            val intent = Intent(requireContext(), CreateMessageFragment::class.java)
             startActivity(intent)
         }
         view.findViewById<View>(R.id.btnArchive).setOnClickListener {
@@ -48,16 +48,16 @@ class MessagesFragment : Fragment() {
         }
 
         btnInbox.setOnClickListener {
-            val intent = Intent(requireContext(), InboxActivity::class.java)
+            val intent = Intent(requireContext(), InboxFragment::class.java)
             startActivity(intent)
         }
 
         btnTrash.setOnClickListener {
-            val intent = Intent(requireContext(), TrashActivity::class.java)
+            val intent = Intent(requireContext(), TrashFragment::class.java)
             startActivity(intent)
         }
         btnArchive.setOnClickListener {
-            val intent = Intent(requireContext(), ArchiveActivity::class.java)
+            val intent = Intent(requireContext(), ArchiveFragment::class.java)
             startActivity(intent)
         }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BuwisBuddyPH.iml" filepath="$PROJECT_DIR$/.idea/modules/BuwisBuddyPH.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BuwisBuddyPH.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BuwisBuddyPH.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BuwisBuddyPH.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BuwisBuddyPH.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BuwisBuddyPH.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BuwisBuddyPH.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BuwisBuddyPH.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BuwisBuddyPH.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ELDROID_The-None-Chalant_FRI_1-30-4-30PM.iml" filepath="$PROJECT_DIR$/.idea/ELDROID_The-None-Chalant_FRI_1-30-4-30PM.iml" />
+    </modules>
+  </component>
+</project>

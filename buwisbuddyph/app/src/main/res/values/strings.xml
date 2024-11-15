@@ -63,6 +63,7 @@
     <string name="quareterly_income_tax">Quareterly Income Tax</string>
     <string name="annual_income_tax">Annual Income Tax</string>
     <string name="monthly_income_tax">Monthly Income Tax</string>
+    <string name="search_users">Search Users</string>
 
     <string name="graduated_income_tax">Graduated Income Tax Rates</string>
     <string name="flat_income_tax">8% Flat Rate</string>

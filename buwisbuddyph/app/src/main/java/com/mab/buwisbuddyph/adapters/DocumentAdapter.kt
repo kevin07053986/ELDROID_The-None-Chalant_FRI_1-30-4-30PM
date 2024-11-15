@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mab.buwisbuddyph.R
 import com.mab.buwisbuddyph.dataclass.Document
-import com.mab.buwisbuddyph.home.DocumentDetailActivity
 
 class DocumentAdapter(private val context: Context) : RecyclerView.Adapter<DocumentAdapter.DocumentViewHolder>() {
 

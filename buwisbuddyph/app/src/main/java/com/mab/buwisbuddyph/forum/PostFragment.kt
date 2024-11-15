@@ -42,10 +42,12 @@ class PostFragment : Fragment() {
         postButton.setOnClickListener {
             savePost()
         }
+
         val returnIcon = view.findViewById<ImageView>(R.id.returnIcon)
-        returnIcon.setOnClickListener{
+        returnIcon.setOnClickListener {
             requireActivity().onBackPressed()
         }
+
         return view
     }
 
@@ -69,7 +71,7 @@ class PostFragment : Fragment() {
                     val postId = db.collection("posts").document().id
                     val post = Post(
                         postTitle = postTitle,
-                        postDescription = postDesc,  // Set the post description
+                        postDescription = postDesc,
                         postContent = postContent,
                         postID = postId,
                         postTimestamp = Timestamp.now(),
@@ -85,11 +87,6 @@ class PostFragment : Fragment() {
                                     postTitleEditText.text.clear()
                                     postDescEditText.text.clear()
                                     postContentEditText.text.clear()
-                                    val forumFragment = ForumFragment()
-                                    requireActivity().supportFragmentManager.beginTransaction().apply {
-                                        replace(R.id.frameLayout, forumFragment)
-                                        commit()
-                                    }
                                 }
                                 .addOnFailureListener { exception ->
                                     Toast.makeText(requireContext(), "Failed to update post", Toast.LENGTH_SHORT).show()

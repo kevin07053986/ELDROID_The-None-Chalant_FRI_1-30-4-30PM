@@ -15,7 +15,6 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mab.buwisbuddyph.R
 import com.mab.buwisbuddyph.dataclass.new_Message
-import com.mab.buwisbuddyph.messages.ChatActivity
 import de.hdodenhof.circleimageview.CircleImageView
 
 class MessageListAdapter(private val messages: List<new_Message>, private val refreshListener: OnRefreshListener) : RecyclerView.Adapter<MessageListAdapter.MessageViewHolder>() {

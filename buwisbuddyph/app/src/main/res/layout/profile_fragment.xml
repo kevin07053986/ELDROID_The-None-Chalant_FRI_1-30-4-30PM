@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ProfileFragment"
+    android:background="@drawable/img_bg2">
+
+    <!-- Header Layout -->
+<LinearLayout
+android:id="@+id/appName"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:background="@color/home_color"
+android:paddingStart="10dp"
+android:paddingEnd="10dp"
+android:layout_alignParentTop="true">
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/returnIcon"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:contentDescription="@string/back_button"
+        android:src="@drawable/left_icon"
+        android:layout_centerVertical="true"/>
+</RelativeLayout>
+
+<TextView
+    android:id="@+id/appNameTV"
+    android:text="@string/app_name"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:textSize="35sp"
+    android:textStyle="bold"
+    android:layout_weight="1"
+    android:clickable="true"
+    android:focusable="true"/>
+</LinearLayout>
+
+    <!-- Profile Info Section in ScrollView -->
+<ScrollView
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_below="@id/appName"
+android:layout_marginTop="20dp">
+
+<LinearLayout
+    android:id="@+id/main2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginStart="50sp"
+    android:layout_marginEnd="50sp">
+
+    <!-- Profile Image -->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/userProfileImg"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/profile_image"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/default_profile_img" />
+
+    <!-- Editable Profile Fields -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/nameTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:background="@drawable/square_border_default"
+            android:text="@string/name"
+            android:textSize="18sp"
+            android:clickable="false"
+            android:focusable="false"/>
+
+        <EditText
+            android:id="@+id/numberTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:background="@drawable/square_border_default"
+            android:hint="@string/number"
+            android:textSize="18sp"
+            android:clickable="false"
+            android:focusable="false"/>
+
+        <EditText
+            android:id="@+id/genderTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:background="@drawable/square_border_default"
+            android:hint="@string/gender"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/tinTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:background="@drawable/square_border_default"
+            android:hint="@string/tin"
+            android:textSize="18sp"
+            android:clickable="false"
+            android:focusable="false"/>
+
+        <EditText
+            android:id="@+id/emailTV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/square_border_default"
+            android:hint="@string/email"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <!-- Edit and Save Buttons -->
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Edit Profile"
+        android:textAlignment="center"
+        android:layout_gravity="center"
+        android:background="@drawable/button_default"/>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:visibility="invisible"
+        android:background="@drawable/button_home_color"
+        android:text="Save"/>
+</LinearLayout>
+</ScrollView>
+    </RelativeLayout>

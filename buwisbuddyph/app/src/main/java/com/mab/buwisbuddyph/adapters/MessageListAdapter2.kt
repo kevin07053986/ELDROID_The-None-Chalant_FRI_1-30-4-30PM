@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 import com.mab.buwisbuddyph.R
-import com.mab.buwisbuddyph.messages.ChatActivity
 import com.mab.buwisbuddyph.dataclass.new_Message
 import de.hdodenhof.circleimageview.CircleImageView
 
