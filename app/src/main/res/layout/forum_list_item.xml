@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/post_title"
-            android:textSize="25sp"
+            android:textSize="25dp"
             android:textStyle="bold"/>
 
     </LinearLayout>
@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:textSize="15sp"
+            android:textSize="15dp"
             android:text="@string/lorem" />
 
     </LinearLayout>
@@ -53,8 +53,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/upVotePost"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="20dp"
                 android:clickable="true"
                 android:focusable="true"
@@ -62,8 +62,8 @@
                 android:contentDescription="@string/upvote"/>
             <TextView
                 android:layout_marginStart="5dp"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:id="@+id/upVotes"
                 android:text=""/>
 
@@ -76,8 +76,8 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/downVotePost"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginStart="10dp"
                 android:clickable="true"
                 android:focusable="true"
@@ -85,8 +85,8 @@
                 android:contentDescription="@string/downvote"/>
             <TextView
                 android:layout_marginStart="5dp"
-                android:layout_width="30sp"
-                android:layout_height="30sp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:text=""
                 android:id="@+id/downVotes"/>
 
@@ -100,8 +100,8 @@
 
            <ImageView
                android:id="@+id/commentButton"
-               android:layout_width="30sp"
-               android:layout_height="30sp"
+               android:layout_width="30dp"
+               android:layout_height="30dp"
                android:contentDescription="@string/comment_button"
                android:scaleType="fitCenter"
                android:clickable="true"

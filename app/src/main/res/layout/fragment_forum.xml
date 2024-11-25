@@ -37,8 +37,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/createPost"
-        android:layout_width="60sp"
-        android:layout_height="60sp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:focusable="true"
         android:src="@drawable/add_icon"
         android:layout_marginBottom="30dp"

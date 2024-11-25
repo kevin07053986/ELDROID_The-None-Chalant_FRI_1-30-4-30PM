@@ -39,7 +39,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:textSize="35sp"
+            android:textSize="35dp"
             android:textStyle="bold"
             android:layout_weight="1"
             android:clickable="true"
@@ -58,13 +58,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="50sp"
-            android:layout_marginEnd="50sp">
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/userProfileImg"
-                android:layout_width="80sp"
-                android:layout_height="80sp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
                 android:contentDescription="@string/profile_image"
@@ -91,7 +91,7 @@
                     android:paddingEnd="10dp"
                     android:background="@drawable/square_border_default"
                     android:text="@string/name"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:clickable="false"
                     android:focusable="false"/>
 
@@ -108,7 +108,7 @@
                     android:paddingEnd="10dp"
                     android:background="@drawable/square_border_default"
                     android:hint="@string/number"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:clickable="false"
                     android:focusable="false"/>
 
@@ -125,7 +125,7 @@
                     android:paddingEnd="10dp"
                     android:background="@drawable/square_border_default"
                     android:hint="@string/gender"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
                 <EditText
                     android:id="@+id/tinTV"
@@ -140,7 +140,7 @@
                     android:paddingEnd="10dp"
                     android:background="@drawable/square_border_default"
                     android:hint="@string/tin"
-                    android:textSize="18sp"
+                    android:textSize="18dp"
                     android:clickable="false"
                     android:focusable="false"/>
 
@@ -157,7 +157,7 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/square_border_default"
                     android:hint="@string/email"
-                    android:textSize="18sp" />
+                    android:textSize="18dp" />
 
 
 

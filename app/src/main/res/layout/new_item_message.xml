@@ -24,14 +24,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="16sp"
+            android:textSize="16dp"
             android:text="Full Name" />
 
         <TextView
             android:id="@+id/lastChatTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="14sp"
+            android:textSize="14dp"
             android:text="Last chat message"
             android:maxLines="1"
             android:ellipsize="end"/>

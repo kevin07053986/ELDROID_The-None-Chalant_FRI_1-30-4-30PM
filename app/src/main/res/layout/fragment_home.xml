@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:text="@string/remaining_budget"
             android:textColor="@color/black"
-            android:textSize="17sp"/>
+            android:textSize="17dp"/>
 
         <EditText
             android:id="@+id/remainingBudgetEt"
@@ -121,7 +121,7 @@
         android:layout_marginTop="80dp"
         android:textColor="@color/home_color"
         android:id="@+id/expenseListTV"
-        android:textSize="24sp"/>
+        android:textSize="24dp"/>
 
     <ListView
         android:id="@+id/list_of_expense"

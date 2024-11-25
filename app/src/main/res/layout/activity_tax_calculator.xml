@@ -42,7 +42,7 @@
             android:focusable="true"
             android:text="@string/tax_calculator"
             android:textColor="@color/black"
-            android:textSize="35sp"
+            android:textSize="35dp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -54,7 +54,7 @@
         android:layout_below="@id/appName"
         android:layout_marginTop="20dp"
         android:layout_marginStart="15dp"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:textColor="@color/home_color"
         android:text="@string/monthly_income"/>
 
@@ -71,7 +71,7 @@
         android:paddingBottom="5dp"
         android:background="@drawable/square_border_default"
         android:inputType="numberDecimal"
-        android:textSize="17sp"/>
+        android:textSize="17dp"/>
 
     <Button
         android:id="@+id/calculateButton"
@@ -79,12 +79,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/incomeTV"
         android:layout_alignParentEnd="true"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/button_home_color"
-        android:text="@string/calculate"/>
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/calculate" />
 
     <TextView
         android:textColor="@color/home_color"
@@ -92,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/sss"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:layout_below="@id/monthlyIncomeET"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"/>
@@ -103,7 +105,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/sssLabel"
         android:layout_marginStart="20dp"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:textColor="@color/home_color"
         android:text="PHP 0.00"/>
 
@@ -113,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/philhealth"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:layout_below="@id/sssContributionTextView"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"/>
@@ -125,7 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/philhealthLabel"
         android:layout_marginStart="20dp"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:text="PHP 0.00"/>
 
     <TextView
@@ -134,7 +136,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PAGIBIG"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:layout_below="@id/philhealthContributionTextView"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"/>
@@ -145,7 +147,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/pagIbigLabel"
         android:layout_marginStart="20dp"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:textColor="@color/home_color"
         android:text="PHP 0.00"/>
 
@@ -155,7 +157,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/home_color"
         android:text="@string/monthly_income_tax"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:layout_below="@id/pagIbigContributionTextView"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"/>
@@ -167,7 +169,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/monthlyIncomeTaxLabel"
         android:layout_marginStart="20dp"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:text="PHP 0.00"/>
 
     <TextView
@@ -176,7 +178,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/quareterly_income_tax"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:layout_below="@id/monthlyIncomeTaxTextView"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"/>
@@ -188,7 +190,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/quarterlyIncomeTaxLabel"
         android:layout_marginStart="20dp"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:text="PHP 0.00"/>
 
     <TextView
@@ -197,7 +199,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/annual_income_tax"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:layout_below="@id/quarterlyIncomeTaxTextView"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"/>
@@ -209,14 +211,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/annualIncomeTaxLabel"
         android:layout_marginStart="20dp"
-        android:textSize="17sp"
+        android:textSize="17dp"
         android:text="PHP 0.00"/>
 
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="20dp"
         android:layout_below="@id/annualIncomeTaxTextView"
         android:layout_marginTop="30dp"
         android:layout_marginStart="20dp"

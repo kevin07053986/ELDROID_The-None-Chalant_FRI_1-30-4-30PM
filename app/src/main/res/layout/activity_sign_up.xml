@@ -13,20 +13,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="50sp"
-        android:layout_marginRight="50sp">
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=""
-            android:layout_marginTop="10sp"
-            android:textSize="30sp"/>
+            android:layout_marginTop="10dp"
+            android:textSize="30dp"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userProfileImg"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
             android:contentDescription="@string/profile_image"
@@ -37,8 +37,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:layout_marginTop="10sp">
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userFullNameET"
@@ -46,8 +46,8 @@
                 android:layout_height="match_parent"
                 android:hint="@string/name"
                 android:background="@drawable/square_border_default"
-                android:paddingStart="15sp"
-                android:paddingEnd="15sp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:singleLine="true"/>
 
 
@@ -55,8 +55,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:layout_marginTop="10sp">
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/birthDateET"
@@ -66,16 +66,16 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:background="@drawable/square_border_default"
-                android:paddingStart="15sp"
-                android:paddingEnd="15sp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:singleLine="true"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:layout_marginTop="10sp">
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userEmailET"
@@ -84,17 +84,17 @@
                 android:hint="@string/email_hint"
                 android:inputType="textEmailAddress"
                 android:background="@drawable/square_border_default"
-                android:paddingStart="15sp"
-                android:paddingEnd="15sp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:singleLine="true"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="60sp"
+            android:layout_height="60dp"
             app:passwordToggleEnabled="true"
-            android:layout_marginTop="15sp">
+            android:layout_marginTop="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userPasswordET"
@@ -103,17 +103,17 @@
                 android:background="@drawable/square_border_default"
                 android:hint="@string/password_hint"
                 android:inputType="textPassword"
-                android:paddingStart="15sp"
-                android:paddingEnd="15sp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:singleLine="true"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="60sp"
+            android:layout_height="60dp"
             app:passwordToggleEnabled="true"
-            android:layout_marginTop="15sp">
+            android:layout_marginTop="15dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userPasswordConfirmationET"
@@ -121,8 +121,8 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/square_border_default"
                 android:hint="@string/password_hint"
-                android:paddingStart="15sp"
-                android:paddingEnd="15sp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:singleLine="true"
                 android:inputType="textPassword" />
 
@@ -131,8 +131,8 @@
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="match_parent"
-            android:layout_height="60sp"
-            android:layout_marginTop="15sp"
+            android:layout_height="60dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/square_border_default"/>
 
 
@@ -140,9 +140,9 @@
             android:id="@+id/createAccountButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15sp"
-            android:paddingStart="15sp"
-            android:paddingEnd="15sp"
+            android:layout_marginTop="15dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
             android:layout_gravity="center"
             android:text="@string/create_account"
             android:background="@drawable/button_default" />

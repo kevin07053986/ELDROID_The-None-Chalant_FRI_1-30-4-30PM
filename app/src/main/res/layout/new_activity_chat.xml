@@ -42,7 +42,7 @@
             android:layout_marginRight="10dp"
             android:layout_toEndOf="@+id/avatar"
             android:layout_centerVertical="true"
-            android:textSize="25sp"
+            android:textSize="25dp"
             android:textStyle="bold"
             android:clickable="true"
             android:focusable="true"/>
