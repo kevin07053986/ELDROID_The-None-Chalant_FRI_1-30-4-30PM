@@ -2,6 +2,7 @@ package com.acosta.eldriod.signin
 
 import android.app.Application
 import android.content.SharedPreferences
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -27,6 +28,7 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 isLoading.value = false
                 if (response.isSuccessful) {
+                    Log.d("login", response.body().toString())
                     response.body()?.let {
                         loginResponse.value = it
                         if (it.token.isNotEmpty()) { // Check if token is valid

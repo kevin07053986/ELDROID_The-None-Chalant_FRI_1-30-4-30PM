@@ -11,11 +11,15 @@ import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.acosta.eldriod.R
+import com.acosta.eldriod.viewmodel.AuthViewModel
+import com.acosta.eldriod.viewmodel.SampleViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class SignInActivity : AppCompatActivity() {
 
     private val signInViewModel: SignInViewModel by viewModels()
+    private val sampleViewModel: SampleViewModel by viewModels()
+    private val authViewModel: AuthViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,6 +62,9 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun onLoginClick(view: View) {
+
+        //sampleViewModel.ping()
+
         val email = findViewById<EditText>(R.id.emailET).text.toString()
         val password = findViewById<EditText>(R.id.passwordET).text.toString()
 
@@ -66,6 +73,7 @@ class SignInActivity : AppCompatActivity() {
             return
         }
 
-        signInViewModel.login(email, password, sharedPreferences)
+        authViewModel.login(LoginRequest(email, password))
+//        signInViewModel.login(email, password, sharedPreferences)
     }
 }
