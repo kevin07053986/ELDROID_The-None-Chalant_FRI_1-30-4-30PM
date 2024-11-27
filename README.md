@@ -22,6 +22,9 @@ https://github.com/kevin07053986/ELDROID_The-None-Chalant_FRI_1-30-4-30PM.git
 ELPHP REPOSITORY LINK:
 https://github.com/kevin07053986/ELPHP_The-None-Chalant_SAT_1-30-4-30PM.git   
 
-Project Documentation Links:
+Project Documentation Link:
 
+https://drive.google.com/file/d/1pQR9z-pxG1kHaieGRLaHV8B0gHgCoXJx/view?usp=sharing
+
+Test Case Link:
 
