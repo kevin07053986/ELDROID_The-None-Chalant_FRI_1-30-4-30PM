@@ -1,0 +1,92 @@
+<resources>
+    <string name="app_name">BuwisBuddyPH</string>
+    <string name="forgotPassword">Forgot Password?</string>
+    <string name="signUp">SIGN UP</string>
+    <string name="login">LOGIN</string>
+    <string name="email_hint">EMAIL\n</string>
+    <string name="password_hint">PASSWORD</string>
+    <string name="profile_image">profile image</string>
+    <string name="create_account">CREATE ACCOUNT</string>
+    <string name="birth_date">BIRTH DATE</string>
+    <string name="last_name">LAST NAME</string>
+    <string name="first_name">FIRST NAME</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="burger_menu">burger menu</string>
+    <string name="calendar_icon">calendar icon</string>
+    <string name="camera_icon">camera icon</string>
+    <string name="home_icon">home icon</string>
+    <string name="messages_icon">messages icon</string>
+    <string name="forum_icon">forum icon</string>
+    <string name="post_title">post title</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus sit amet mauris eu suscipit. In posuere laoreet massa vitae vestibulum. Nulla lorem mi, blandit vitae quam non, fermentum suscipit nunc. Vestibulum bibendum dapibus interdum. Praesent et tempor tortor,</string>
+    <string name="lorem_short">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis cursus sit amet mauris eu</string>
+    <string name="upvote">upvote</string>
+    <string name="downvote">downvote</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="post_content">Content</string>
+    <string name="post">post</string>
+    <string name="default_user">Juan Doe</string>
+    <string name="messages">Messages</string>
+    <string name="to">To:</string>
+    <string name="send_button">send button</string>
+    <string name="name">NAME</string>
+    <string name="user_name">USERNAME</string>
+    <string name="search">Search</string>
+    <string name="search_button">search button</string>
+    <string name="back_button">back button</string>
+    <string name="number">Number</string>
+    <string name="gender">Gender</string>
+    <string name="tin">TIN</string>
+    <string name="email">Email</string>
+    <string name="edit">EDIT</string>
+    <string name="settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="comment_button">comment button</string>
+    <string name="loading">Loading…</string>
+    <string name="hamburger_icon">hamburger icon</string>
+    <string name="juan_dela_cruz">Juan Dela Cruz</string>
+    <string name="professional_help">Professional Help</string>
+    <string name="profile">Profile</string>
+    <string name="my_profile">My Profile</string>
+    <string name="create_budget">Create Budget</string>
+    <string name="in_app_purchases">In-App Purchases</string>
+    <string name="guides">Guides</string>
+    <string name="returns">Return</string>
+    <string name="return_to_previous">return</string>
+    <string name="rating">*****</string>
+    <string name="tax_calculator">Tax Calculator</string>
+    <string name="monthly_income">Monthly Income</string>
+    <string name="calculate">Calculate</string>
+    <string name="sss">SSS Contribution</string>
+    <string name="philhealth">PhilHealth</string>
+    <string name="quareterly_income_tax">Quareterly Income Tax</string>
+    <string name="annual_income_tax">Annual Income Tax</string>
+    <string name="monthly_income_tax">Monthly Income Tax</string>
+
+    <string name="graduated_income_tax">Graduated Income Tax Rates</string>
+    <string name="flat_income_tax">8% Flat Rate</string>
+    <string name="contribution_format">PHP %.2f</string>
+    <string name="tax_format">PHP %.2f</string>
+    <string name="best_tax_method">Best Taxation Method: %s</string>
+    <string name="search_forum">search forum</string>
+    <string name="document_list">Document List</string>
+
+
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="forward"><![CDATA[->]]></string>
+    <string name="enter_budget">ENTER BUDGET</string>
+    <string name="enter">ENTER</string>
+    <string name="remaining_budget">Remaining Budget</string>
+    <string name="enter_expense">Enter Expense</string>
+    <string name="enter_expense_label">Enter Expense Label</string>
+    <string name="create_new_budget">Create New Budget</string>
+    <string name="wait_message">Please wait...</string>
+
+    <string-array name="user_type_array">
+        <item>Freelancer</item>
+        <item>Accountant</item>
+    </string-array>
+
+
+</resources>
