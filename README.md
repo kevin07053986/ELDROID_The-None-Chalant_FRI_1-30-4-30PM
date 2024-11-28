@@ -66,6 +66,7 @@ This section presents the database dictionary, which includes the information co
 
 Table 1
 USER ENTITY DATA DICTIONARY
+
 ![image](https://github.com/user-attachments/assets/c13b0ee6-5ae7-4f4c-b0bd-cd3fe7171874)
 
 
