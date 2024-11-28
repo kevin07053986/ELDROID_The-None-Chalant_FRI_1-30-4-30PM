@@ -1,6 +1,9 @@
 The None-Chalant
 
+
 BuwisBuddyPH, a comprehensive mobile and web tax management application that simplifies tax management in the Philippines. It addresses the pain points of complex tax laws, tracking expenses, and meeting deadlines. By making tax management accessible and understandable, it empowers individuals and promotes financial literacy.
+
+
 
 ELDROID MEMBERS:
 
@@ -13,6 +16,7 @@ Cormanes, Kim Harold
 Imus, Jemar
 
 Japson, Immanuel Pon Elan
+
 
 
 ELPHP MEMBERS:
@@ -28,18 +32,23 @@ Cormanes, Kim Harold
 Imus, Jemar
 
 
+
 ELDROID REPOSITORY LINK:
 
 https://github.com/kevin07053986/ELDROID_The-None-Chalant_FRI_1-30-4-30PM.git
+
 
 ELPHP REPOSITORY LINK:
 
 https://github.com/kevin07053986/ELPHP_The-None-Chalant_SAT_1-30-4-30PM.git   
 
 
+
 Actual Documentation:
 
+
 BUWISBUDDYPH
+
 
 
 IT – ELDROID 1 – 84054 / 84064
@@ -47,9 +56,11 @@ IT – ELDROID 1 – 84054 / 84064
 Mon-Wed 4:30 – 5:30 PM – Lec | Fri 1:30 – 4:30 PM – Lab 
 
 
+
 IT – ELPHP – 84090 / 84104
 
 Sat 1:30 – 4:30 PM – Lab | Fri 4:30 – 6:30 PM – Lec
+
 
 
 Submitted by:
@@ -68,12 +79,16 @@ Japson, Immanuel Pon Elan (ELDROID)
 
 
 
+
 Mr. Richyll Son
 
 Instructor
 
 
+
 December 2024
+
+
 
 
 Entity Relationship Diagram
