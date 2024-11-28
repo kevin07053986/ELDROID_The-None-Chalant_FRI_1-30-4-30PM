@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment">
+
+    <LinearLayout
+        android:id="@+id/remainingBudget"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/createNewBudget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_home_color"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginStart="80dp"
+            android:text="@string/create_new_budget" />
+
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/exepenses"
+        android:background="@drawable/square_border_default"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_below="@id/remainingBudget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/remainText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remaining_budget"
+            android:textColor="@color/black"
+            android:textSize="17sp"/>
+
+        <EditText
+            android:id="@+id/remainingBudgetEt"
+            android:layout_width="146dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/remainText"
+            android:background="@drawable/square_border_default"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="none"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:textColor="@color/home_color" />
+
+        <EditText
+            android:id="@+id/expense_label_ET"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/remainText"
+            android:layout_marginBottom="10dp"
+            android:hint="@string/enter_expense_label"
+            android:background="@drawable/square_border_default"/>
+        <EditText
+            android:layout_marginBottom="10dp"
+            android:id="@+id/expense_ET"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/expense_label_ET"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_weight="1"
+            android:hint="@string/enter_expense"
+            android:background="@drawable/square_border_default"/>
+
+        <Button
+            android:id="@+id/enterExpenseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="13dp"
+            android:layout_toEndOf="@+id/expense_ET"
+            android:background="@drawable/button_home_color"
+            android:text="@string/enter" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_below="@+id/exepenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="EXPENSES"
+        android:layout_marginTop="80dp"
+        android:textColor="@color/home_color"
+        android:id="@+id/expenseListTV"
+        android:textSize="24sp"/>
+
+    <ListView
+        android:id="@+id/list_of_expense"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/expenseListTV"/>
+
+</RelativeLayout>

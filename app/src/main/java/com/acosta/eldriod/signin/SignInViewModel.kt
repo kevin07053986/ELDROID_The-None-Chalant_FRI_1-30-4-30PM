@@ -6,47 +6,47 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.acosta.eldriod.models.User
 import com.acosta.eldriod.network.ApiService
 import com.acosta.eldriod.network.RetrofitInstance
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 class SignInViewModel(application: Application) : AndroidViewModel(application) {
 
     private val apiService = RetrofitInstance.createService(ApiService::class.java)
-    val loginResponse = MutableLiveData<LoginResponse>()
+    val loginResponse = MutableLiveData<User>()
     val errorMessage = MutableLiveData<String>()
-    val isLoading = MutableLiveData<Boolean>()
 
     fun login(email: String, password: String, sharedPreferences: SharedPreferences) {
-        isLoading.value = true
-
-        val loginRequest = LoginRequest(email, password)
-        apiService.loginUser(loginRequest).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
-                isLoading.value = false
+        viewModelScope.launch {
+            try {
+                val response = apiService.login(LoginRequest(email, password))
                 if (response.isSuccessful) {
-                    Log.d("login", response.body().toString())
-                    response.body()?.let {
-                        loginResponse.value = it
-                        if (it.token.isNotEmpty()) { // Check if token is valid
-                            val editor = sharedPreferences.edit()
-                            editor.putString("userEmail", email)
-                            editor.apply()
-                        }
+                    response.body()?.let { serverResponse ->
+                        val user = serverResponse.data.user
+                        val token = serverResponse.data.token
+
+                        // Save user data to SharedPreferences
+                        sharedPreferences.edit()
+                            .putString("token", token)
+                            .putString("user_id", user.id.toString())
+                            .putString("user_name", user.name)
+                            .putString("user_email", user.email)
+                            .putString("user_dob", user.dob)
+                            .putString("user_accountType", user.accountType)
+                            .apply()
+
+                        // Post user data to LiveData
+                        loginResponse.postValue(user)
+                    } ?: run {
+                        errorMessage.postValue("Empty response from server.")
                     }
                 } else {
-                    errorMessage.value = "Login failed: ${response.message()}"
+                    errorMessage.postValue("Login failed: ${response.message()}")
                 }
+            } catch (e: Exception) {
+                Log.e("SignInViewModel", "Exception during login: ${e.message}")
+                errorMessage.postValue("Error: ${e.localizedMessage}")
             }
-
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                isLoading.value = false
-                errorMessage.value = "Error: ${t.message}"
-            }
-        })
+        }
     }
 }
-

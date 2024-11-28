@@ -11,14 +11,16 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.acosta.eldriod.HomeActivity
 import com.acosta.eldriod.R
-import com.acosta.eldriod.viewmodel.AuthViewModel
-import com.acosta.eldriod.viewmodel.SampleViewModel
+import com.acosta.eldriod.SignUpActivity
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.launch
 
 class SignInActivity : AppCompatActivity() {
 
-    private val authViewModel: AuthViewModel by viewModels()
+    private val authViewModel: SignInViewModel by viewModels()
     private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,29 +31,41 @@ class SignInActivity : AppCompatActivity() {
 
         val loginButton = findViewById<Button>(R.id.loginButton)
         val signUpTV = findViewById<TextView>(R.id.signUpTV)
-        val forgotPasswordTV = findViewById<TextView>(R.id.forgotPasswordTV)
 
-        loginButton.setOnClickListener { view -> onLoginClick(view) }
+        signUpTV.setOnClickListener{
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+        }
 
-        // observe if loginResponse is being updated
-        authViewModel.loginResponse.observe(this) { loginResponse ->
+        loginButton.setOnClickListener { view ->
+            onLoginClick(view)
+        }
 
-            // start intent dre, switch to dashboard activity
-            Toast.makeText(this, loginResponse.user.name, Toast.LENGTH_LONG).show()
+        // Observing LiveData
+        authViewModel.loginResponse.observe(this) { response ->
+            response?.let {
+//                Toast.makeText(this, "Welcome, ${it.user.name}", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this, HomeActivity::class.java))
+            }
+        }
+
+        authViewModel.errorMessage.observe(this) { error ->
+            error?.let {
+                Snackbar.make(findViewById(android.R.id.content), it, Snackbar.LENGTH_LONG).show()
+            }
         }
     }
 
-
     private fun onLoginClick(view: View) {
-
         val email = findViewById<EditText>(R.id.emailET).text.toString()
         val password = findViewById<EditText>(R.id.passwordET).text.toString()
 
         if (email.isEmpty() || password.isEmpty()) {
             Snackbar.make(view, "Please fill in all fields", Snackbar.LENGTH_SHORT).show()
-            return
+        } else {
+            lifecycleScope.launch {
+                authViewModel.login(email, password, sharedPreferences)
+            }
         }
-
-        authViewModel.login(LoginRequest(email, password))
     }
 }
