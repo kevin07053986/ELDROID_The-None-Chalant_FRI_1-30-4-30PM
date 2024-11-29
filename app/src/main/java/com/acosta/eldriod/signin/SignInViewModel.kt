@@ -10,6 +10,7 @@ import com.acosta.eldriod.models.User
 import com.acosta.eldriod.network.ApiService
 import com.acosta.eldriod.network.RetrofitInstance
 import kotlinx.coroutines.launch
+
 class SignInViewModel(application: Application) : AndroidViewModel(application) {
 
     private val apiService = RetrofitInstance.createService(ApiService::class.java)
@@ -25,26 +26,27 @@ class SignInViewModel(application: Application) : AndroidViewModel(application) 
                         val user = serverResponse.data.user
                         val token = serverResponse.data.token
 
-                        // Save user data to SharedPreferences
-                        sharedPreferences.edit()
-                            .putString("token", token)
-                            .putString("user_id", user.id.toString())
-                            .putString("user_name", user.name)
-                            .putString("user_email", user.email)
-                            .putString("user_dob", user.dob)
-                            .putString("user_accountType", user.accountType)
-                            .apply()
+                        user.id?.let {
+                            sharedPreferences.edit()
+                                .putString("token", token)
+                                .putInt("user_id", it)
+                                .putString("user_name", user.name)
+                                .putString("user_email", user.email)
+                                .putString("user_dob", user.dob)
+                                .putString("user_accountType", user.accountType)
+                                .apply()
+                        }
 
-                        // Post user data to LiveData
                         loginResponse.postValue(user)
                     } ?: run {
                         errorMessage.postValue("Empty response from server.")
                     }
                 } else {
-                    errorMessage.postValue("Login failed: ${response.message()}")
+                    val errorBody = response.errorBody()?.string()
+                    errorMessage.postValue("Login failed: ${errorBody ?: response.message()}")
                 }
             } catch (e: Exception) {
-                Log.e("SignInViewModel", "Exception during login: ${e.message}")
+                //Log.e("SignInViewModel", "Exception during login: ${e.message}")
                 errorMessage.postValue("Error: ${e.localizedMessage}")
             }
         }

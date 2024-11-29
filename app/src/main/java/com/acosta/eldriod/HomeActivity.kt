@@ -8,63 +8,66 @@ import android.provider.MediaStore
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.acosta.eldriod.calendar.ui.calendar.CalendarFragment
+import com.acosta.eldriod.calendar.ui.CalendarFragment
 import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions
 import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions.RESULT_FORMAT_JPEG
 import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions.RESULT_FORMAT_PDF
-import com.google.mlkit.vision.documentscanner.GmsDocumentScannerOptions.SCANNER_MODE_FULL
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanning
 import com.google.mlkit.vision.documentscanner.GmsDocumentScanningResult
 import java.io.InputStream
 import java.io.OutputStream
 
 class HomeActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        // Retrieve user data from SharedPreferences
+
         val sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("user_id", -1) // Default to -1 if not found
         val userName = sharedPreferences.getString("user_name", getString(R.string.guest))
         val userEmail = sharedPreferences.getString("user_email", "")
         val userDob = sharedPreferences.getString("user_dob", "")
         val userAccountType = sharedPreferences.getString("user_accountType", "")
-        // Display user's name
+        //Log.d("HomeActivity", "User data: id=$userId, name=$userName, email=$userEmail, dob=$userDob, accountType=$userAccountType")
         val usernameTextView = findViewById<TextView>(R.id.username)
         usernameTextView.text = userName
-        // Log user data for debugging
-        Log.d("HomeActivity", "User data: name=$userName, email=$userEmail, dob=$userDob, accountType=$userAccountType")
+        setupIconListeners()
 
-        //calendar
-        val calendarIcon = findViewById<ImageView>(R.id.calendarIcon)
-        calendarIcon.setOnClickListener {
-            Log.d("calendar", "calendar icon clicked")
+        setupDocumentScanner()
+
+        if (savedInstanceState == null) {
+            loadHomeFragment()
+        }
+    }
+
+    private fun setupIconListeners() {
+        findViewById<ImageView>(R.id.calendarIcon).setOnClickListener {
             toCalendar()
         }
 
-
-        //guide icon
-        val guideIcon = findViewById<ImageView>(R.id.guideIcon)
-        guideIcon.setOnClickListener{
+        findViewById<ImageView>(R.id.guideIcon).setOnClickListener {
             toGuide()
         }
 
-        val calcIcon = findViewById<ImageView>(R.id.calcIcon)
-        calcIcon.setOnClickListener{
+        findViewById<ImageView>(R.id.calcIcon).setOnClickListener {
             toCalc()
         }
+    }
 
+    private fun setupDocumentScanner() {
         val options = GmsDocumentScannerOptions.Builder()
-            .setScannerMode(SCANNER_MODE_FULL)
+            .setScannerMode(GmsDocumentScannerOptions.SCANNER_MODE_FULL)
             .setGalleryImportAllowed(true)
             .setResultFormats(RESULT_FORMAT_JPEG, RESULT_FORMAT_PDF)
             .build()
 
         val scanner = GmsDocumentScanning.getClient(options)
-
         val scannerLauncher = registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val scanningResult = GmsDocumentScanningResult.fromActivityResultIntent(result.data)
@@ -73,43 +76,48 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
-        val cameraIcon = findViewById<ImageView>(R.id.cameraIcon)
-        cameraIcon.setOnClickListener {
+
+        findViewById<ImageView>(R.id.cameraIcon).setOnClickListener {
             scanner.getStartScanIntent(this@HomeActivity)
                 .addOnSuccessListener { intentSender ->
                     scannerLauncher.launch(IntentSenderRequest.Builder(intentSender).build())
                 }
                 .addOnFailureListener { exception ->
-                    Log.e("HomeActivity", "Error starting scanner", exception)
+                    //Log.e("HomeActivity", "Error starting scanner", exception)
+                    Toast.makeText(this, getString(R.string.scanFail), Toast.LENGTH_SHORT).show()
                 }
         }
+    }
 
-        if (savedInstanceState == null) {
-            supportFragmentManager.beginTransaction().replace(R.id.frameLayout, HomeFragment()).commit()
-        }
+    private fun loadHomeFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frameLayout, HomeFragment())
+            .commit()
     }
 
     private fun toCalendar() {
-        val calendarFragment = CalendarFragment()
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.frameLayout, calendarFragment)
-            commit()
-        }
+        //Log.d("HomeActivity", "Navigating to CalendarFragment")
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frameLayout, CalendarFragment())
+            .addToBackStack(null) // Allows back navigation
+            .commit()
     }
 
-    private fun toGuide(){
+    private fun toGuide() {
+        //Log.d("HomeActivity", "Navigating to GuideActivity")
         val intent = Intent(this, GuideActivity::class.java)
         startActivity(intent)
     }
 
-    private fun toCalc(){
+    private fun toCalc() {
+        //Log.d("HomeActivity", "Navigating to CalcActivity")
         val intent = Intent(this, CalcActivity::class.java)
         startActivity(intent)
     }
+
     private fun savePdfLocally(scanningResult: GmsDocumentScanningResult) {
         scanningResult.pdf?.let { pdf ->
             val pdfUri = pdf.uri
-            val pageCount = pdf.pageCount
             val inputStream: InputStream? = contentResolver.openInputStream(pdfUri)
             val contentValues = ContentValues().apply {
                 put(MediaStore.MediaColumns.DISPLAY_NAME, "scanned_document.pdf")
@@ -120,10 +128,14 @@ class HomeActivity : AppCompatActivity() {
             }
             val newPdfUri = contentResolver.insert(MediaStore.Files.getContentUri("external"), contentValues)
             val outputStream: OutputStream? = newPdfUri?.let { contentResolver.openOutputStream(it) }
+
             if (inputStream != null && outputStream != null) {
                 inputStream.copyTo(outputStream)
                 inputStream.close()
                 outputStream.close()
+                Toast.makeText(this, getString(R.string.pdfSaved), Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, getString(R.string.pdfFail), Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -13,6 +13,6 @@
         android:id="@+id/eventCellTV"
         android:textSize="20sp"
         android:textColor="@color/black"
-        android:text="Event"/>
+        android:text="@string/event"/>
 
 </LinearLayout>

@@ -1,24 +1,36 @@
 package com.acosta.eldriod.repository
 
-import com.acosta.eldriod.models.Budget
-import com.acosta.eldriod.models.Expense
+import com.acosta.eldriod.budget.BudgetRequest
+import com.acosta.eldriod.budget.BudgetResponse
 import com.acosta.eldriod.network.ApiService
-import com.acosta.eldriod.network.RetrofitInstance
-import retrofit2.Response
 
-class BudgetRepository {
+class BudgetRepository(private val apiService: ApiService) {
 
-//    private val apiService = RetrofitInstance.createService(ApiService::class.java)
-//
-//    suspend fun saveBudget(budget: Budget): Response<Budget> {
-//        return apiService.saveBudget(budget)
-//    }
-//
-//    suspend fun getBudget(userId: String): Response<Budget> {
-//        return apiService.getBudget(userId)
-//    }
-//
-//    suspend fun addExpense(userId: String, expense: Expense): Response<Expense> {
-//        return apiService.addExpense(userId, expense)
-//    }
+    suspend fun storeBudget(budgetRequest: BudgetRequest): Result<BudgetResponse> {
+        return try {
+            val response = apiService.storeBudget(budgetRequest)
+            if (response.isSuccessful) {
+                response.body()?.let { Result.success(it) }
+                    ?: Result.failure(Exception(RepositoryMessages.EMPTY_RESPONSE))
+            } else {
+                Result.failure(Exception("${RepositoryMessages.POST_BUDGET_FAILURE}: ${response.message()}"))
+            }
+        } catch (e: Exception) {
+            Result.failure(Exception("${RepositoryMessages.ERROR_POSTING_BUDGET}: ${e.message}"))
+        }
+    }
+
+    suspend fun getBudget(userId: String): Result<BudgetResponse> {
+        return try {
+            val response = apiService.getBudget(userId)
+            if (response.isSuccessful) {
+                response.body()?.let { Result.success(it) }
+                    ?: Result.failure(Exception(RepositoryMessages.EMPTY_RESPONSE))
+            } else {
+                Result.failure(Exception("${RepositoryMessages.FETCH_BUDGET_FAILURE}: ${response.message()}"))
+            }
+        } catch (e: Exception) {
+            Result.failure(Exception("${RepositoryMessages.ERROR_FETCHING_BUDGET}: ${e.message}"))
+        }
+    }
 }

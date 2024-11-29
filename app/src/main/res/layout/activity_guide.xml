@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -62,7 +61,7 @@
             android:id="@+id/tax_obligation_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tax Obligation for Freelancers:"
+            android:text="@string/tax_obligation_title"
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
 
@@ -70,42 +69,42 @@
             android:id="@+id/tax_obligation_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Freelancers, whether working part-time or full-time, must pay income tax. Home-based freelancers earning online income fall into this category. Those doing business with overseas clients can claim foreign tax credits."
-            android:layout_below="@id/tax_obligation_title"/>
+            android:text="@string/tax_obligation_description"
+            android:layout_below="@id/tax_obligation_title" />
 
         <!-- BIR Registration Steps Section -->
         <TextView
             android:id="@+id/bir_registration_steps_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BIR Registration Steps:"
+            android:text="@string/bir_registration_steps_title"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
-            android:layout_below="@id/tax_obligation_description"/>
+            android:layout_below="@id/tax_obligation_description" />
 
         <TextView
             android:id="@+id/bir_registration_steps_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1. Register with the Bureau of Internal Revenue (BIR).\n2. Obtain a Taxpayer Identification Number (TIN)."
-            android:layout_below="@id/bir_registration_steps_title"/>
+            android:text="@string/bir_registration_steps_description"
+            android:layout_below="@id/bir_registration_steps_title" />
 
         <!-- BIR Registration Process Section -->
         <TextView
             android:id="@+id/bir_registration_process_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="BIR Registration Process:"
+            android:text="@string/bir_registration_process_title"
             android:textStyle="bold"
             android:layout_marginTop="16dp"
-            android:layout_below="@id/bir_registration_steps_description"/>
+            android:layout_below="@id/bir_registration_steps_description" />
 
         <TextView
             android:id="@+id/bir_registration_process_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1. Complete BIR Form 1901.\n2. Attend the seminar at your Revenue District Office (RDO).\n3. Pay the registration and certification fees.\n4. Obtain your Certificate of Registration.\n5. Register your books of accounts."
-            android:layout_below="@id/bir_registration_process_title"/>
+            android:text="@string/bir_registration_process_description"
+            android:layout_below="@id/bir_registration_process_title" />
     </RelativeLayout>
 
 </RelativeLayout>

@@ -46,9 +46,8 @@ class CalcActivity : AppCompatActivity() {
             val netIncome = grossIncome - totalDeductions
 
             val graduatedIncomeTax = calculateGraduatedIncomeTax(netIncome)
-            val flatIncomeTax = (netIncome - 250000) * 0.08 // Flat rate tax
+            val flatIncomeTax = (netIncome - 250000) * 0.08
 
-            // Determine which tax method yields the lower tax amount
             val bestMethod = if (graduatedIncomeTax < flatIncomeTax) getString(R.string.graduated_income_tax) else getString(R.string.flat_income_tax)
             val bestTax = minOf(graduatedIncomeTax, flatIncomeTax)
 

@@ -1,5 +1,6 @@
 package com.acosta.eldriod
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.acosta.eldriod.models.Expense
 import com.acosta.eldriod.viewmodel.BudgetViewModel
-
 
 class HomeFragment : Fragment() {
 
@@ -38,19 +38,25 @@ class HomeFragment : Fragment() {
         enterExpenseButton = view.findViewById(R.id.enterExpenseButton)
         listOfExpense = view.findViewById(R.id.list_of_expense)
 
-        budgetViewModel = ViewModelProvider(this).get(BudgetViewModel::class.java)
+        budgetViewModel = ViewModelProvider(this)[BudgetViewModel::class.java]
 
-        // Observe the LiveData from the ViewModel
-        budgetViewModel.budget.observe(viewLifecycleOwner) { budget ->
-            remainingBudgetEt.setText(budget.budgetAmount.toString())
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getString("user_id", null)
+
+        if (!userId.isNullOrEmpty()) {
+            budgetViewModel.fetchBudget(userId)
+        } else {
+            Toast.makeText(requireContext(), getString(R.string.noUser), Toast.LENGTH_LONG).show()
         }
 
-        budgetViewModel.expenseList.observe(viewLifecycleOwner) { expenseList ->
+        budgetViewModel.remainingBudget.observe(viewLifecycleOwner) { budget ->
+            remainingBudgetEt.setText(budget.toString())
+        }
+
+        budgetViewModel.expenseList.observe(viewLifecycleOwner) { expenses ->
             val adapter = SimpleAdapter(
                 requireContext(),
-                expenseList.map {
-                    mapOf("label" to it.label, "expense" to it.amount.toString())
-                },
+                expenses.map { mapOf("label" to it.label, "expense" to it.amount.toString()) },
                 android.R.layout.simple_list_item_2,
                 arrayOf("label", "expense"),
                 intArrayOf(android.R.id.text1, android.R.id.text2)
@@ -58,27 +64,31 @@ class HomeFragment : Fragment() {
             listOfExpense.adapter = adapter
         }
 
-        createNewBudget.setOnClickListener {
-            // Handle budget creation here (navigate to BudgetActivity)
-        }
 
         enterExpenseButton.setOnClickListener {
             val expenseLabel = expenseLabelET.text.toString()
             val expenseStr = expenseET.text.toString()
 
             if (expenseLabel.isNotEmpty() && expenseStr.isNotEmpty()) {
-                val expense = expenseStr.toDouble()
-                val currentBudget = budgetViewModel.budget.value?.budgetAmount ?: 0.0
+                val expenseAmount = expenseStr.toDouble()
+                val currentBudget = budgetViewModel.remainingBudget.value ?: 0.0
 
-                if (expense <= currentBudget) {
-                    val userId = "user-id" // Get the user ID from session or authentication
-                    val expenseItem = Expense(expenseLabel, expense)
-                    budgetViewModel.addExpense(userId, expenseItem)
+                if (expenseAmount <= currentBudget) {
+                    val updatedBudget = currentBudget - expenseAmount
+                    budgetViewModel.remainingBudget.value = updatedBudget
+
+                    val newExpense = Expense(expenseLabel, expenseAmount)
+                    val updatedExpenseList = budgetViewModel.expenseList.value.orEmpty().toMutableList()
+                    updatedExpenseList.add(newExpense)
+                    budgetViewModel.expenseList.value = updatedExpenseList
+
+                    expenseLabelET.text.clear()
+                    expenseET.text.clear()
                 } else {
-                    Toast.makeText(requireContext(), "Expense exceeds remaining budget", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), getString(R.string.exceeds), Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(requireContext(), "Enter a valid expense", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.validAmount), Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -1,7 +1,9 @@
 package com.acosta.eldriod.network
 
-import com.acosta.eldriod.calendar.Event
+import com.acosta.eldriod.budget.BudgetRequest
+import com.acosta.eldriod.budget.BudgetResponse
 import com.acosta.eldriod.models.Budget
+import com.acosta.eldriod.models.Event
 import com.acosta.eldriod.models.Expense
 import com.acosta.eldriod.models.Server
 import com.acosta.eldriod.models.User
@@ -14,10 +16,11 @@ import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.Call
+import retrofit2.http.DELETE
 
 interface ApiService {
 
-    @POST("mock-login") // Updated endpoint
+    @POST("mock-login")
     suspend fun login(@Body loginRequest: LoginRequest): Response<Server<LoginResponse>>
 
 //    @POST("register")
@@ -29,12 +32,18 @@ interface ApiService {
     @POST("events")
     suspend fun saveEvent(@Body event: Event): Response<Server<Any>>
 
-    @GET("api/budget/{userId}")
-    fun getBudget(@Path("userId") userId: String): Call<Budget>
+    @POST("budgets")
+    suspend fun storeBudget(@Body budgetRequest: BudgetRequest): Response<BudgetResponse>
+    @GET("budget/{userId}")
+    suspend fun getBudget(@Path("userId") userId: String): Response<BudgetResponse>
 
-    @PUT("api/budget/{userId}")
-    fun updateBudget(@Path("userId") userId: String, @Body budget: Budget): Call<Void>
 
-    @POST("api/expense/{userId}")
-    fun addExpense(@Path("userId") userId: String, @Body expense: Expense): Call<Void>
+    @GET("events")
+    suspend fun getAllEvents(): List<Event>
+    @POST("events")
+    suspend fun createEvent(@Body event: Event): Event
+    @PUT("events/{id}")
+    suspend fun updateEvent(@Path("id") id: Int, @Body event: Event): Event
+    @DELETE("events/{id}")
+    suspend fun deleteEvent(@Path("id") id: Int): Response<Unit>
 }

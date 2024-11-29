@@ -1,7 +1,7 @@
 package com.acosta.eldriod.models
 
 data class Budget(
-    var budgetAmount: Double,
-    var expenseList: List<Expense> = emptyList()
+    var user_id: Int,
+    var budgetAmount: Double
 )
 

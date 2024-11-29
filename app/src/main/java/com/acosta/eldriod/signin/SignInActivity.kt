@@ -41,10 +41,9 @@ class SignInActivity : AppCompatActivity() {
             onLoginClick(view)
         }
 
-        // Observing LiveData
         authViewModel.loginResponse.observe(this) { response ->
             response?.let {
-//                Toast.makeText(this, "Welcome, ${it.user.name}", Toast.LENGTH_LONG).show()
+                //Toast.makeText(this, "Welcome, ${it.user.name}", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this, HomeActivity::class.java))
             }
         }

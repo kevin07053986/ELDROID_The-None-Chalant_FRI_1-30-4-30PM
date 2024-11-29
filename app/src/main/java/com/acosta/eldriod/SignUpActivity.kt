@@ -19,7 +19,6 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
-        // Initialize the UI elements
         val userFullNameET: EditText = findViewById(R.id.userFullNameET)
         val birthDateET: EditText = findViewById(R.id.birthDateET)
         val userEmailET: EditText = findViewById(R.id.userEmailET)

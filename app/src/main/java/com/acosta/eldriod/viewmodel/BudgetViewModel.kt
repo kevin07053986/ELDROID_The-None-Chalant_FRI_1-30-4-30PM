@@ -1,75 +1,69 @@
 package com.acosta.eldriod.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.acosta.eldriod.models.Budget
+import androidx.lifecycle.viewModelScope
+import com.acosta.eldriod.budget.BudgetRequest
+import com.acosta.eldriod.budget.BudgetResponse
 import com.acosta.eldriod.models.Expense
-import com.acosta.eldriod.network.ApiService
 import com.acosta.eldriod.network.RetrofitInstance
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.acosta.eldriod.network.ApiService
+import com.acosta.eldriod.repository.BudgetRepository
+import kotlinx.coroutines.launch
 
 class BudgetViewModel : ViewModel() {
 
-    private val _budget = MutableLiveData<Budget>()
-    val budget: LiveData<Budget> get() = _budget
+    private val apiService = RetrofitInstance.createService(ApiService::class.java)
+    private val budgetRepository = BudgetRepository(apiService)
 
-    private val _expenseList = MutableLiveData<List<Expense>>()
-    val expenseList: LiveData<List<Expense>> get() = _expenseList
+    val budgetResponse = MutableLiveData<BudgetResponse>()
+    val errorMessage = MutableLiveData<String>()
+    val remainingBudget = MutableLiveData<Double>()
+    val expenseList = MutableLiveData<List<Expense>>(emptyList())
 
-    // Create ApiService instance using RetrofitInstance
-    private val apiService: ApiService by lazy {
-        RetrofitInstance.createService(ApiService::class.java)
+    fun postBudget(budgetRequest: BudgetRequest) {
+        viewModelScope.launch {
+            try {
+                val result = budgetRepository.storeBudget(budgetRequest)
+                result.onSuccess { response ->
+                    budgetResponse.postValue(response)
+                    remainingBudget.postValue(response.budgetAmount) // Initialize remaining budget
+                }.onFailure { error ->
+                    errorMessage.postValue(error.message ?: "Unknown error occurred")
+                }
+            } catch (e: Exception) {
+                errorMessage.postValue("Error posting budget: ${e.message}")
+            }
+        }
     }
 
     fun fetchBudget(userId: String) {
-        apiService.getBudget(userId).enqueue(object : Callback<Budget> {
-            override fun onResponse(call: Call<Budget>, response: Response<Budget>) {
-                if (response.isSuccessful) {
-                    _budget.value = response.body()
-                } else {
-                    Log.e("BudgetViewModel", "Error fetching budget: ${response.errorBody()?.string()}")
+        viewModelScope.launch {
+            try {
+                val result = budgetRepository.getBudget(userId)
+                result.onSuccess { response ->
+                    budgetResponse.postValue(response)
+                    remainingBudget.postValue(response.budgetAmount) // Update the remaining budget
+                }.onFailure { error ->
+                    errorMessage.postValue(error.message ?: "Failed to fetch budget")
                 }
+            } catch (e: Exception) {
+                errorMessage.postValue("Error fetching budget: ${e.message}")
             }
-
-            override fun onFailure(call: Call<Budget>, t: Throwable) {
-                Log.e("BudgetViewModel", "Network error: ${t.message}")
-            }
-        })
+        }
     }
 
-    fun updateBudget(userId: String, budget: Budget) {
-        apiService.updateBudget(userId, budget).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    _budget.value = budget
-                } else {
-                    Log.e("BudgetViewModel", "Error updating budget: ${response.errorBody()?.string()}")
-                }
-            }
+    fun updateLocalBudgetAndExpenses(expense: Expense) {
+        val currentBudget = remainingBudget.value ?: 0.0
+        if (expense.amount <= currentBudget) {
+            val updatedBudget = currentBudget - expense.amount
+            remainingBudget.postValue(updatedBudget)
 
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.e("BudgetViewModel", "Network error: ${t.message}")
-            }
-        })
-    }
-
-    fun addExpense(userId: String, expense: Expense) {
-        apiService.addExpense(userId, expense).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
-                if (response.isSuccessful) {
-                    fetchBudget(userId) // Refresh the budget after adding expense
-                } else {
-                    Log.e("BudgetViewModel", "Error adding expense: ${response.errorBody()?.string()}")
-                }
-            }
-
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Log.e("BudgetViewModel", "Network error: ${t.message}")
-            }
-        })
+            val updatedExpenseList = expenseList.value.orEmpty().toMutableList()
+            updatedExpenseList.add(expense)
+            expenseList.postValue(updatedExpenseList)
+        } else {
+            errorMessage.postValue("Expense exceeds remaining budget")
+        }
     }
 }

@@ -23,7 +23,7 @@
             android:name=".CalcActivity"
             android:exported="false" />
         <activity
-            android:name=".BudgetActivity"
+            android:name=".budget.BudgetActivity"
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"

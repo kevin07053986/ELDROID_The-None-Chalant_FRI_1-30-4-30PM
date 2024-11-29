@@ -76,7 +76,6 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:layout_weight="1"
             android:layout_marginTop="15dp"
             android:layout_below="@+id/remainText"
             android:layout_marginBottom="10dp"
@@ -93,7 +92,6 @@
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:layout_weight="1"
             android:hint="@string/enter_expense"
             android:background="@drawable/square_border_default"/>
 
@@ -117,7 +115,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="EXPENSES"
+        android:text="@string/expenses"
         android:layout_marginTop="80dp"
         android:textColor="@color/home_color"
         android:id="@+id/expenseListTV"
